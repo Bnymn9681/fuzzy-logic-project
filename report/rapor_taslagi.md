@@ -1,0 +1,5 @@
+## 1. Introduction
+Bu çalışmanın amacı, makroekonomik değişkenler (Altın/TL kuru, VIX endeksi ve 2 Yıllık Devlet Tahvili faiz oranları) kullanılarak Borsa İstanbul 100 (BİST 100) endeksinin fiyat tahminlemesini gerçekleştirmektir. Finansal piyasaların doğrusal olmayan dinamik yapısı nedeniyle, temel tahmin modeli olarak bulanık mantık kuralları ile yapay sinir ağlarının öğrenme yeteneğini birleştiren ANFIS (Adaptive Neuro-Fuzzy Inference System) mimarisi kullanılmıştır.
+
+## 7. Experimental Setup
+Deneysel çalışmada 2010 ile 2023 yılları arasını kapsayan, haftalık frekansta toplanmış toplam 720 gözlem kullanılmıştır. Veriler modele verilmeden önce otokorelasyon ve değişen varyans (heteroskedastisite) etkilerini azaltmak amacıyla logaritmik dönüşüme (birinci farklar) tabi tutulmuş ve modelin daha hızlı eğitilebilmesi için 0-1 aralığında min-max normalizasyonu ile ölçeklendirilmiştir. Veri seti, makaledeki referans metodolojiye sadık kalınarak 540 hafta eğitim (training) ve 180 hafta test (testing) verisi olarak ikiye ayrılmıştır.
