@@ -1,5 +1,11 @@
 ## 1. Introduction
 Bu çalışmanın amacı, makroekonomik değişkenler (Altın/TL kuru, VIX endeksi ve 2 Yıllık Devlet Tahvili faiz oranları) kullanılarak Borsa İstanbul 100 (BİST 100) endeksinin fiyat tahminlemesini gerçekleştirmektir. Finansal piyasaların doğrusal olmayan dinamik yapısı nedeniyle, temel tahmin modeli olarak bulanık mantık kuralları ile yapay sinir ağlarının öğrenme yeteneğini birleştiren ANFIS (Adaptive Neuro-Fuzzy Inference System) mimarisi kullanılmıştır.
 
+## 4. Original Method
+Referans makalede BİST 100 endeksi tahmini için Bulanık Mantık ve Yapay Sinir Ağları mimarilerinin melezlenmesiyle oluşan ANFIS modeli önerilmiştir. Sistemde bulanıklaştırma (fuzzification) için Gaussian üyelik fonksiyonları kullanılmış, kural tabanı çıkarımı (fuzzy AND) aşamasında Takagi-Sugeno yaklaşımı tercih edilmiş ve elde edilen kural ateşleme güçleri normalize edilerek ağırlıklı toplam yöntemiyle durulaştırılmıştır (defuzzification).
+
+## 5. Reproduction Methodology
+Makaledeki ANFIS yapısı, projenin yeniden gerçekleştirme aşamasında (Reproduction) PyTorch kütüphanesi kullanılarak tensör tabanlı bir yapay sinir ağı (nn.Module) olarak modellenmiştir. Model, referans çalışmadaki gibi 3 girdi (GOLD_TL, VIX, BOND_2Y) ve bunlar üzerinden üretilen 8 farklı kural (rule base) düğümü içermektedir. Ağırlıkların (mu, sigma ve doğrusal katsayılar) optimizasyonunda Adam optimizasyon algoritması kullanılmış, model 1500 epok boyunca eğitilerek performans metrikleri (MSE, MAE, R²) elde edilmiştir.
+
 ## 7. Experimental Setup
 Deneysel çalışmada 2010 ile 2023 yılları arasını kapsayan, haftalık frekansta toplanmış toplam 720 gözlem kullanılmıştır. Veriler modele verilmeden önce otokorelasyon ve değişen varyans (heteroskedastisite) etkilerini azaltmak amacıyla logaritmik dönüşüme (birinci farklar) tabi tutulmuş ve modelin daha hızlı eğitilebilmesi için 0-1 aralığında min-max normalizasyonu ile ölçeklendirilmiştir. Veri seti, makaledeki referans metodolojiye sadık kalınarak 540 hafta eğitim (training) ve 180 hafta test (testing) verisi olarak ikiye ayrılmıştır.
