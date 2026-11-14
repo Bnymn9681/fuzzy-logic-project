@@ -26,7 +26,7 @@ Deneylerde, referans makaleye sadık kalınarak `01.01.2010 - 31.12.2023` tarih 
 Projeyi yerel makinenizde çalıştırmak için Python 3.10+ kurulu olmalıdır. Gerekli kütüphaneleri yüklemek için:
 
 ```bash
-git clone <GITHUB_REPO_LINKIN>
+git clone https://github.com/Bnymn9681/fuzzy-logic-project
 cd fuzzy-logic-project
 pip install -r requirements.txt
 ```
